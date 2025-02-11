@@ -30,7 +30,7 @@ data "azuread_user" "existing" {
 }
 
 resource "azurerm_role_assignment" "example" {
-  principal_id         = azuread_user.p8.object_id
+  principal_id         = data.azuread_user.existing.object_id
   role_definition_name = "Contributor"
   scope                = "/subscriptions/${var.subscription_id}"
 }
