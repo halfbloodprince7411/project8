@@ -25,6 +25,10 @@ provider "azuread" {
 #   password            = var.admin_password
 # }
 
+data "azuread_user" "existing" {
+  object_id = "547708e3-7184-4b31-81f7-381bfa8acb5e"
+}
+
 resource "azurerm_role_assignment" "example" {
   principal_id         = azuread_user.p8.object_id
   role_definition_name = "Contributor"
