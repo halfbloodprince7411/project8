@@ -33,4 +33,8 @@ resource "azurerm_role_assignment" "example" {
   principal_id         = data.azuread_user.existing.object_id
   role_definition_name = "Contributor"
   scope                = "/subscriptions/${var.subscription_id}"
+
+  lifecycle {
+    ignore_changes = [principal_id]
+  }
 }
