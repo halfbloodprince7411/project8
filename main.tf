@@ -12,16 +12,18 @@ provider "azuread" {
   tenant_id       = var.tenant_id
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "rg-terraworks"
-  location = "West Europe"
-}
+# Commented out as they are already created and imported
+# resource "azurerm_resource_group" "example" {
+#   name     = "rg-terraworks"
+#   location = "West Europe"
+# }
 
-resource "azuread_user" "p8" {
-  user_principal_name = "p8@pemmrajusirishaoutlook.onmicrosoft.com"  # Replace with your tenant's verified domain
-  display_name        = "P8 User"
-  password            = var.admin_password
-}
+# Commented out as the user already exists
+# resource "azuread_user" "p8" {
+#   user_principal_name = "p8@pemmrajusirishaoutlook.onmicrosoft.com"
+#   display_name        = "P8 User"
+#   password            = var.admin_password
+# }
 
 resource "azurerm_role_assignment" "example" {
   principal_id         = azuread_user.p8.object_id
