@@ -6,6 +6,12 @@ provider "azurerm" {
   tenant_id       = var.tenant_id
 }
 
+provider "azuread" {
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
+}
+
 resource "azurerm_resource_group" "example" {
   name     = "rg-terraworks"
   location = "West Europe"
